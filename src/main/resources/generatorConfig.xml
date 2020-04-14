@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <context id="test" targetRuntime="MyBatis3" defaultModelType="flat">
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+
+        <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+        </plugin>
+        <!--数据库链接URL，用户名、密码 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://10.0.2.8/ways" userId="cimendev" password="123456">
+            <!--                        connectionURL="jdbc:mysql://10.0.2.8/ways" userId="cimendev" password="123456">-->
+            <!--        <jdbcConnection driverClass="com.mysql.jdbc.Driver"-->
+            <!--                        connectionURL="jdbc:mysql://10.0.2.8/mock_polardb_instance" userId="cimendev" password="123456">-->
+        </jdbcConnection>
+        <!-- java类型处理器
+            用于处理DB中的类型到Java中的类型，默认使用JavaTypeResolverDefaultImpl；
+            注意一点，默认会先尝试使用Integer，Long，Short等来对应DECIMAL和 NUMERIC数据类型；
+        -->
+        <javaTypeResolver type="org.mybatis.generator.internal.types.JavaTypeResolverDefaultImpl">
+            <!--
+                true：使用BigDecimal对应DECIMAL和 NUMERIC数据类型
+                false：默认,
+                    scale>0;length>18：使用BigDecimal;
+                    scale=0;length[10,18]：使用Long；
+                    scale=0;length[5,9]：使用Integer；
+                    scale=0;length<5：使用Short；
+             -->
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- 生成模型的包名和位置 -->
+        <javaModelGenerator targetPackage="com.example.demo.model"
+                            targetProject="../my-first-spring/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+            <!-- 设置一个根对象，
+                如果设置了这个根对象，那么生成的keyClass或者recordClass会继承这个类；在Table的rootClass属性中可以覆盖该选项
+                注意：如果在key class或者record class中有root class相同的属性，MBG就不会重新生成这些属性了，包括：
+                    1，属性名相同，类型相同，有相同的getter/setter方法；
+             -->
+        </javaModelGenerator>
+
+
+
+        <!-- 生成映射文件的包名和位置 -->
+        <sqlMapGenerator targetPackage="mapper"
+                         targetProject="../my-first-spring/src/main/resources/mybatis">
+            <!--        <sqlMapGenerator targetPackage="com.cimen.ways.educe.dal"-->
+            <!--                         targetProject="../educe-service/src/main/resources/mybatis/polar">-->
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+
+        <!-- 生成DAO的包名和位置 -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.example.demo.dal"
+                             targetProject="../my-first-spring/src/main/java">
+            <!--        <javaClientGenerator type="XMLMAPPER"-->
+            <!--                             targetPackage="com.cimen.ways.educe.dal.polar"-->
+            <!--                             targetProject="../educe-service/src/main/java">-->
+            <property name="enableSubPackages" value="true"/>
+
+        </javaClientGenerator>
+
+        <!--不要改老表,注释即可,复制粘贴新的-->
+
+        <table tableName="ways_builder">
+            <generatedKey column="builder_id" sqlStatement="JDBC"/>
+        </table>
+
+    </context>
+</generatorConfiguration>
