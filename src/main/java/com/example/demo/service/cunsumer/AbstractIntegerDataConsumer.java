@@ -1,7 +1,5 @@
 package com.example.demo.service.cunsumer;
 
-import com.alibaba.fastjson.JSONObject;
-import com.example.demo.model.DataTaskRecord;
 import com.google.common.base.Joiner;
 import io.vavr.control.Try;
 import lombok.extern.slf4j.Slf4j;
@@ -9,7 +7,6 @@ import org.redisson.api.RBoundedBlockingQueue;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.Optional;
 import java.util.function.Consumer;
 
 /**
@@ -19,28 +16,25 @@ import java.util.function.Consumer;
  * @Version 1.0
  **/
 @Slf4j
-public abstract class AbstractDataConsumer implements Consumer<DataTaskRecord> {
+public abstract class AbstractIntegerDataConsumer implements Consumer<String> {
 
     @Autowired
     private RedissonClient redissonClient;
 
-    public AbstractDataConsumer() {
+    public AbstractIntegerDataConsumer() {
         // 基于 Redis 的分布式阻塞队列
-        RBoundedBlockingQueue<DataTaskRecord> blockingQueue = redissonClient.getBoundedBlockingQueue("my:task-record:" + this.businessType());
+        RBoundedBlockingQueue<String> blockingQueue = redissonClient.getBoundedBlockingQueue("my:task-record:string:" + this.businessType());
         Try.of(() -> blockingQueue.trySetCapacity(32))
                 .onFailure(t -> log.warn("尝试设置Redis队列长度失败.", t));
         blockingQueue.subscribeOnElements(this);
     }
 
     @Override
-    public void accept(DataTaskRecord dataTaskRecord) {
+    public void accept(String dataTaskRecord) {
 
         //执行业务信息
-        String obj = Optional.ofNullable(dataTaskRecord)
-                .map(JSONObject::toJSONString)
-                .orElse("");
 
-        System.out.println(Joiner.on(" : ").join("你好,队列已消费", "参数信息", obj));
+        System.out.println(Joiner.on(" : ").join("你好,队列已消费", "参数信息", dataTaskRecord));
     }
 
 

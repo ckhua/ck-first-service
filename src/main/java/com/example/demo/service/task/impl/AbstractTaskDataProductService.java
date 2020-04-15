@@ -1,5 +1,4 @@
 package com.example.demo.service.task.impl;
-import com.example.demo.model.DataTaskRecord;
 import com.example.demo.service.task.ITaskDataProductService;
 
 /**
@@ -21,6 +20,6 @@ public abstract class AbstractTaskDataProductService implements ITaskDataProduct
      * 虎丘需要处理数据
      * @return
      */
-    protected abstract DataTaskRecord getTaskRecord();
+    protected abstract String getTaskRecord();
 
 }

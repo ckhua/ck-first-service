@@ -1,7 +1,7 @@
 package com.example.demo.service.cunsumer.impl;
 
 import com.example.demo.enums.RedissonDataConsumerType;
-import com.example.demo.service.cunsumer.AbstractDataConsumer;
+import com.example.demo.service.cunsumer.AbstractIntegerDataConsumer;
 
 /**
  * @Description 业务消费类
@@ -9,10 +9,10 @@ import com.example.demo.service.cunsumer.AbstractDataConsumer;
  * @Author chen kang hua
  * @Version 1.0
  **/
-public class OrderDataConsumer extends AbstractDataConsumer {
+public class OrderIntegerDataConsumer extends AbstractIntegerDataConsumer {
 
 
-    public OrderDataConsumer() {
+    public OrderIntegerDataConsumer() {
         super();
     }
 

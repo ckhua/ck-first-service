@@ -1,6 +1,6 @@
 package com.example.demo.service.query;
 
-import com.example.demo.model.WaysBuilder;
+import com.example.demo.model.StudyCallRecord;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import java.util.List;
  * @Author chen kang hua
  * @Version 1.0
  **/
-public interface IMallQueryService {
+public interface ICallRecordQueryService {
 
-    List<WaysBuilder> queryMallInfo();
+    List<StudyCallRecord> queryCallRecordInfo();
 }

@@ -4,8 +4,6 @@ import java.util.List;
 /**
  * CheckListUtils
  * 校验集合信息
- * @author chen kang hua
- * @description
  * @date 2019/11/28
  */
 public class CheckListUtils {

@@ -33,10 +33,10 @@ import static java.lang.Boolean.TRUE;
 public class DbConfig {
 
     //@Value("${ways.jdbc.url}")
-    private String url = "jdbc:mysql://10.0.2.8:3306/ways?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true";
+    private String url = "jdbc:mysql://47.94.13.132:33306/study?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true";
 
     //@Value("${ways.jdbc.username}")
-    private String userName = "cimendev";
+    private String userName = "root";
 
     //@Value("${ways.jdbc.password}")
     private String password = "123456";

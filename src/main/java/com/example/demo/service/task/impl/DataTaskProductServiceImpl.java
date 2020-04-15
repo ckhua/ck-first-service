@@ -1,19 +1,13 @@
 package com.example.demo.service.task.impl;
 
 import com.example.demo.enums.RedissonDataConsumerType;
-import com.example.demo.exception.CkhException;
-import com.example.demo.exception.TaskException;
-import com.example.demo.model.DataTaskRecord;
-import io.vavr.control.Try;
-import org.redisson.Redisson;
+import com.example.demo.utils.JedisUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RBoundedBlockingQueue;
+import org.redisson.api.RedissonClient;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
-
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 
 /**
  * @Description 类注释
@@ -21,6 +15,7 @@ import java.util.concurrent.TimeoutException;
  * @Author chen kang hua
  * @Version 1.0
  **/
+@Slf4j
 @Service(value = "ITaskDataProductService_ORDER")
 @Validated
 public class DataTaskProductServiceImpl extends AbstractTaskDataProductService {
@@ -28,33 +23,42 @@ public class DataTaskProductServiceImpl extends AbstractTaskDataProductService {
     /**
      * Redisson
      */
-    private Redisson redisson;
+    @Autowired
+    private RedissonClient redissonClient;
 
-    public DataTaskProductServiceImpl(Redisson redisson){
-        this.redisson = redisson;
-    }
+    @Autowired
+    private JedisUtil jedisUtil;
 
     @Override
-    public void supply(){
-        RBoundedBlockingQueue<DataTaskRecord> blockingQueue = this.redisson.getBoundedBlockingQueue("my:task-record:" + this.getDataType());
+    public void supply()  {
+        RBoundedBlockingQueue<String> blockingQueue = this.redissonClient.getBoundedBlockingQueue("my:task-record:string:" + this.getDataType());
         //根据需要数据进行处理
-        Try.of(() -> blockingQueue.putAsync(this.getTaskRecord()))
-                .mapTry(future -> future.get(5, TimeUnit.SECONDS))
-                .recoverWith(TimeoutException.class, Try.failure(new CkhException(TaskException.TASK_BUSY)))
-                .recoverWith(CancellationException.class, Try.failure(new CkhException(TaskException.TASK_CREATE_ERROR)))
-                .recoverWith(InterruptedException.class, Try.failure(new CkhException(TaskException.TASK_CREATE_ERROR)))
-                .recoverWith(ExecutionException.class, Try.failure(new CkhException(TaskException.TASK_CREATE_ERROR)))
-                .get();
+
+        try {
+            blockingQueue.put(this.getTaskRecord());
+        }catch (InterruptedException ex){
+            ex.printStackTrace();
+        }
+
+
+
+//        Try.of(() -> )
+//                .mapTry(future -> future.get(5, TimeUnit.SECONDS))
+//                .recoverWith(TimeoutException.class, Try.failure(new CkhException(TaskException.TASK_BUSY)))
+//                .recoverWith(CancellationException.class, Try.failure(new CkhException(TaskException.TASK_CREATE_ERROR)))
+//                .recoverWith(InterruptedException.class, Try.failure(new CkhException(TaskException.TASK_CREATE_ERROR)))
+//                .recoverWith(ExecutionException.class, Try.failure(new CkhException(TaskException.TASK_CREATE_ERROR)))
+//                .get();
     }
 
     @Override
-    protected String getDataType(){
+    protected String getDataType() {
         return RedissonDataConsumerType.ORDER.getCode();
     }
 
     @Override
-    protected DataTaskRecord getTaskRecord(){
-        return DataTaskRecord.builder().recordId(666).build();
+    protected String getTaskRecord() {
+        return "hello";
     }
 
 }
