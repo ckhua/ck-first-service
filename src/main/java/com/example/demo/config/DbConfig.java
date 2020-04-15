@@ -22,13 +22,14 @@ import java.util.ArrayList;
 import static java.lang.Boolean.TRUE;
 
 /**
- * @author Liuhao
- * Description:WaysDbConfigBean
- * Date:14:30 2019/10/9
- */
+ * @Description db配置
+ * @Date 2020/4/14 11:28
+ * @Author chen kang hua
+ * @Version 1.0
+ **/
 @Configuration
 @EnableTransactionManagement
-@MapperScan("com.example.demo.dal")
+@MapperScan(basePackages = "com.example.demo.dal", sqlSessionTemplateRef = "ckhSqlSessionTemplate")
 public class DbConfig {
 
     //@Value("${ways.jdbc.url}")
@@ -79,7 +80,7 @@ public class DbConfig {
     @Value("${max.request.size:50}")
     private Long maxRequestSize;
 
-    @Bean(value = "waysDataSource")
+    @Bean(value = "ckhDataSource")
     public DataSource getDataSource() {
         DruidDataSource dataSource = new DruidDataSource();
         //移除jdbc url中的amp;否则在springboot2.0+mysql8.0启动报错
@@ -100,8 +101,8 @@ public class DbConfig {
         return dataSource;
     }
 
-    @Bean(value = "waysSqlSessionFactory")
-    public SqlSessionFactory sqlSessionFactory(@Qualifier(value = "waysDataSource") DataSource dataSource) throws Exception {
+    @Bean(value = "ckhSqlSessionFactory")
+    public SqlSessionFactory sqlSessionFactory(@Qualifier(value = "ckhDataSource") DataSource dataSource) throws Exception {
         SqlSessionFactoryBean sessionFactoryBean = new SqlSessionFactoryBean();
         sessionFactoryBean.setDataSource(dataSource);
 
@@ -114,12 +115,12 @@ public class DbConfig {
         return sessionFactoryBean.getObject();
     }
 
-    @Bean(value = "waysSqlSessionTemplate")
-    public SqlSessionTemplate sqlSessionTemplate(@Qualifier(value = "waysSqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
+    @Bean(value = "ckhSqlSessionTemplate")
+    public SqlSessionTemplate sqlSessionTemplate(@Qualifier(value = "ckhSqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
         return new SqlSessionTemplate(sqlSessionFactory);
     }
 
-    @Bean(value = "waysDataSourceTransactionManager")
+    @Bean(value = "ckhDataSourceTransactionManager")
     public DataSourceTransactionManager dataSourceTransactionManager(DataSource dataSource) {
         return new DataSourceTransactionManager(dataSource);
     }

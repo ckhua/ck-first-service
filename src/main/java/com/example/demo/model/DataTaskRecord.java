@@ -1,0 +1,22 @@
+package com.example.demo.model;
+
+import lombok.*;
+import lombok.experimental.Accessors;
+
+import java.io.Serializable;
+
+/**
+ * @Description 类注释
+ * @Date 2020/4/15 16:29
+ * @Author chen kang hua
+ * @Version 1.0
+ **/
+@Builder(builderClassName = "Builder", toBuilder = true)
+@NoArgsConstructor(access = AccessLevel.PACKAGE)
+@AllArgsConstructor(access = AccessLevel.PACKAGE)
+@Data
+@Accessors(chain = true)
+public class DataTaskRecord implements Serializable {
+
+    private Integer recordId;
+}
