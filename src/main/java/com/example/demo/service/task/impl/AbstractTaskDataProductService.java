@@ -17,7 +17,7 @@ public abstract class AbstractTaskDataProductService implements ITaskDataProduct
     protected abstract String getDataType();
 
     /**
-     * 虎丘需要处理数据
+     * 获取需要处理数据
      * @return
      */
     protected abstract String getTaskRecord();

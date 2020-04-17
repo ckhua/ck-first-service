@@ -10,5 +10,9 @@ import java.util.function.Function;
  **/
 public interface ICommonQueryService<Param, Result> {
 
+    /**
+     * 通用查询数据接口
+     * @return
+     */
     Function<Param, Result> queryData();
 }

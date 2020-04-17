@@ -17,6 +17,6 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class OrderCommonQueryContext {
 
-    @ApiModelProperty("商场ID")
+    @ApiModelProperty("订单号")
     public String orderNo;
 }

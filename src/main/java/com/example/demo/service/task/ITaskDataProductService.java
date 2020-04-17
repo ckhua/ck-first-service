@@ -8,5 +8,8 @@ package com.example.demo.service.task;
  **/
 public interface ITaskDataProductService {
 
+    /**
+     * 提交队列信息
+     */
     void supply();
 }

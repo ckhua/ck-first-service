@@ -12,5 +12,9 @@ import java.util.List;
  **/
 public interface ICallRecordQueryService {
 
+    /**
+     * 简单查询数据接口
+     * @return
+     */
     List<StudyCallRecord> queryCallRecordInfo();
 }
