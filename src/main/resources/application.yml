@@ -1,6 +1,6 @@
 server:
   port: 8088
-  name: my-first-spring
+  name: ck-first-service
 
 endpoints:
   restart:
