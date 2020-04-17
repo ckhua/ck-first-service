@@ -22,7 +22,7 @@ public class MySpringServiceFirstApplication {
         SpringApplication.run(MySpringServiceFirstApplication.class, args);
     }
 
-    @NacosValue(value = "${service.name:1}", autoRefreshed = true)
+    @NacosValue(value = "${service.name:ck-first-service}", autoRefreshed = true)
     private String serverName;
 
     @GetMapping(value = "/test")

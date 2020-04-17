@@ -35,10 +35,10 @@ public class DbConfig {
     //@Value("${ways.jdbc.url}")
     private String url = "jdbc:mysql://47.94.13.132:33306/study?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true";
 
-    //@Value("${ways.jdbc.username}")
+    //@Value("${jdbc.username}")
     private String userName = "root";
 
-    //@Value("${ways.jdbc.password}")
+    //@Value("${jdbc.password}")
     private String password = "123456";
 
    // @Value("${druid.initialSize}")
