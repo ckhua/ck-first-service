@@ -29,7 +29,6 @@ public abstract class AbstractIntegerDataConsumer implements Consumer<String> {
     public void accept(String dataTaskRecord) {
 
         //执行业务信息
-
         System.out.println(Joiner.on(" : ").join("你好,队列已消费", "参数信息", dataTaskRecord));
     }
 

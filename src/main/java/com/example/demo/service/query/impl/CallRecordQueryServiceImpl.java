@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * @Description 查询实现类
+ * @Description 通话记录查询实现类
  * @Date 2020/4/14 11:36
  * @Author chen kang hua
  * @Version 1.0

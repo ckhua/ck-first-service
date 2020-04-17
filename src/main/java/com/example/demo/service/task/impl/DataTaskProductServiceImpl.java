@@ -1,7 +1,7 @@
 package com.example.demo.service.task.impl;
 
 import com.example.demo.enums.RedissonDataConsumerType;
-import com.example.demo.utils.JedisUtil;
+import com.example.demo.utils.redis.JedisUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RBoundedBlockingQueue;
 import org.redisson.api.RedissonClient;

@@ -1,7 +1,7 @@
 package com.example.demo.service.query.impl;
 
-import com.example.demo.VO.OrderCommonQueryParamVO;
-import com.example.demo.VO.OrderCommonQueryVO;
+import com.example.demo.vo.OrderCommonQueryParamVO;
+import com.example.demo.vo.OrderCommonQueryVO;
 import com.example.demo.service.query.context.OrderCommonQueryContext;
 import org.springframework.stereotype.Service;
 

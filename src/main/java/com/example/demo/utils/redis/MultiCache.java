@@ -1,4 +1,4 @@
-package com.example.demo.redis;
+package com.example.demo.utils.redis;
 
 import com.example.demo.utils.thread.ThreadLocalUtil;
 import lombok.Getter;

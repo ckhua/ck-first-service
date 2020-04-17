@@ -5,7 +5,7 @@ import lombok.*;
 import lombok.experimental.Accessors;
 
 /**
- * @Description 类注释
+ * @Description 订单通用查询上下文信息
  * @Date 2020/4/15 14:51
  * @Author chen kang hua
  * @Version 1.0

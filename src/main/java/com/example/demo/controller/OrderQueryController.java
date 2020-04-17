@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
-import com.example.demo.VO.OrderCommonQueryParamVO;
-import com.example.demo.VO.OrderCommonQueryVO;
+import com.example.demo.vo.OrderCommonQueryParamVO;
+import com.example.demo.vo.OrderCommonQueryVO;
 import com.example.demo.enums.CommonQueryServiceType;
 import com.example.demo.exception.OrderCommonException;
 import com.example.demo.service.query.ICommonQueryService;
