@@ -32,7 +32,7 @@ public class TaskDataController {
     private Map<String, ITaskDataProductService> taskDataProductServiceMap;
 
 
-    @ApiOperation(value = "查询简单数据", notes = "查询简单数据")
+    @ApiOperation(value = "生产队列信息", notes = "生产队列信息")
     @PostMapping(value = "redisson/task/product", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public Boolean redissonTaskProduct(@ApiParam(value = "消费类型", required = true) @RequestParam(value = "dataConsumerType", required = true) RedissonDataConsumerType dataConsumerType) {
 
