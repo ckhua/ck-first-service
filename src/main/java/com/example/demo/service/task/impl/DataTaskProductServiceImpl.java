@@ -31,9 +31,11 @@ public class DataTaskProductServiceImpl extends AbstractTaskDataProductService {
 
     @Override
     public void supply()  {
-        RBoundedBlockingQueue<String> blockingQueue = this.redissonClient.getBoundedBlockingQueue("my:task-record:string:" + this.getDataType());
-        //根据需要数据进行处理
 
+       RBoundedBlockingQueue<String> blockingQueue = this.redissonClient.getBoundedBlockingQueue("my:task-record:string:" + this.getDataType());
+       // RBlockingQueue<String> blockingQueue = this.redissonClient.getBlockingQueue("my:task-record:string:" + this.getDataType());
+
+        //根据需要数据进行处理
         try {
             blockingQueue.put(this.getTaskRecord());
         }catch (InterruptedException ex){

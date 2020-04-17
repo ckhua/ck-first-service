@@ -116,6 +116,13 @@
             <artifactId>jackson-module-parameter-names</artifactId>
         </dependency>
 
+        <!--  nacos -->
+        <dependency>
+            <groupId>com.alibaba.boot</groupId>
+            <artifactId>nacos-config-spring-boot-starter</artifactId>
+            <version>0.2.1</version>
+        </dependency>
+
         <!--  cache -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

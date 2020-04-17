@@ -3,9 +3,8 @@ package com.example.demo.service.cunsumer;
 import com.google.common.base.Joiner;
 import io.vavr.control.Try;
 import lombok.extern.slf4j.Slf4j;
+import org.redisson.Redisson;
 import org.redisson.api.RBoundedBlockingQueue;
-import org.redisson.api.RedissonClient;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.function.Consumer;
 
@@ -18,12 +17,9 @@ import java.util.function.Consumer;
 @Slf4j
 public abstract class AbstractIntegerDataConsumer implements Consumer<String> {
 
-    @Autowired
-    private RedissonClient redissonClient;
-
-    public AbstractIntegerDataConsumer() {
+    public AbstractIntegerDataConsumer(Redisson redisson) {
         // 基于 Redis 的分布式阻塞队列
-        RBoundedBlockingQueue<String> blockingQueue = redissonClient.getBoundedBlockingQueue("my:task-record:string:" + this.businessType());
+        RBoundedBlockingQueue<String> blockingQueue = redisson.getBoundedBlockingQueue("my:task-record:string:" + this.businessType());
         Try.of(() -> blockingQueue.trySetCapacity(32))
                 .onFailure(t -> log.warn("尝试设置Redis队列长度失败.", t));
         blockingQueue.subscribeOnElements(this);

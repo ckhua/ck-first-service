@@ -1,7 +1,7 @@
 server:
   port: 8088
-info:
-  component: my-first-spring
+  name: my-first-spring
+
 endpoints:
   restart:
     enabled: true
@@ -23,4 +23,9 @@ spring:
     database: 0
     host: 47.94.13.132
     port: 6379
+
+nacos:
+  config:
+    server-addr: 47.94.13.132:8848
+
 

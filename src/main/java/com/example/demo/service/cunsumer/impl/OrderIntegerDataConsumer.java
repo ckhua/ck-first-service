@@ -2,6 +2,8 @@ package com.example.demo.service.cunsumer.impl;
 
 import com.example.demo.enums.RedissonDataConsumerType;
 import com.example.demo.service.cunsumer.AbstractIntegerDataConsumer;
+import org.redisson.Redisson;
+import org.springframework.stereotype.Component;
 
 /**
  * @Description 业务消费类
@@ -9,11 +11,11 @@ import com.example.demo.service.cunsumer.AbstractIntegerDataConsumer;
  * @Author chen kang hua
  * @Version 1.0
  **/
+@Component
 public class OrderIntegerDataConsumer extends AbstractIntegerDataConsumer {
 
-
-    public OrderIntegerDataConsumer() {
-        super();
+    public OrderIntegerDataConsumer(Redisson redisson) {
+        super(redisson);
     }
 
     @Override
