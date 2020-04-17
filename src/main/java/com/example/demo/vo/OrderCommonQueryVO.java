@@ -19,7 +19,7 @@ import java.io.Serializable;
 @Accessors(chain = true)
 public class OrderCommonQueryVO implements Serializable {
 
-    @ApiModelProperty("商场ID")
+    @ApiModelProperty("订单号")
     public String orderNo;
 
 }
