@@ -2,7 +2,7 @@ package com.example.demo.service.task.impl;
 import com.example.demo.service.task.ITaskDataProductService;
 
 /**
- * @Description redisson 生产处理类
+ * @Description 抽象阻塞队列生产处理服务
  * @Date 2020/4/15 17:03
  * @Author chen kang hua
  * @Version 1.0

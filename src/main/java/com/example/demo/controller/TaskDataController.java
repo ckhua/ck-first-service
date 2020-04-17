@@ -21,7 +21,7 @@ import java.util.Optional;
  * @Author chen kang hua
  * @Version 1.0
  **/
-@Api(tags = {"first--redisson阻塞队列"})
+@Api(tags = {"first-redisson阻塞队列"})
 @RestController
 public class TaskDataController {
 

@@ -4,18 +4,22 @@ import com.alibaba.nacos.api.annotation.NacosInjected;
 import com.alibaba.nacos.api.config.annotation.NacosValue;
 import com.alibaba.nacos.api.naming.NamingService;
 import com.alibaba.nacos.api.naming.pojo.Instance;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 /**
- * @Description 类注释
+ * @Description nacos 获取服务
  * @Date 2020/4/17 16:14
  * @Author chen kang hua
  * @Version 1.0
  **/
+@Api(tags = {"first-nacos-获取服务"})
+@RestController
 public class NacosController {
 
     @NacosInjected
