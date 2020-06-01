@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.aop.redis.limit.RedisRateLimiter;
 import com.example.demo.vo.OrderCommonQueryParamVO;
 import com.example.demo.vo.OrderCommonQueryVO;
 import com.example.demo.enums.CommonQueryServiceType;
@@ -44,6 +45,7 @@ public class OrderQueryController {
 
     @ApiOperation(value = "查询简单数据", notes = "查询简单数据")
     @PostMapping(value = "query/order/data", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @RedisRateLimiter(value = 1 ,key = "queryOrderData")
     public List<OrderCommonQueryVO> queryOrder(@ApiParam(value = "编号", required = false) @RequestParam(value = "recordId", required = false) Integer recordId,
                                                @ApiParam(value = "查询信息", required = false) @RequestBody OrderCommonQueryParamVO commonQueryParamVO) {
 

@@ -1,13 +1,15 @@
 package com.example.demo;
 
-import com.alibaba.nacos.spring.context.annotation.config.NacosPropertySource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Slf4j
-//@Import({Swagger2.class})
-@NacosPropertySource(dataId = "ck-first-service", autoRefreshed = true)
+//@NacosPropertySource(dataId = "ck-first-service", autoRefreshed = true)
+@EnableTransactionManagement
+@EnableAspectJAutoProxy(proxyTargetClass = true)
 @SpringBootApplication(scanBasePackages = {
         "com.example.demo",}
 )

@@ -19,4 +19,5 @@ import java.io.Serializable;
 public class DataTaskRecord implements Serializable {
 
     private Integer recordId;
+
 }

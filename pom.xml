@@ -235,6 +235,21 @@
 
     </dependencies>
 
+    <repositories>
+        <repository>
+            <id>central</id>
+            <name>aliyun maven</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <layout>default</layout>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
     <build>
         <plugins>
             <plugin>
@@ -251,11 +266,6 @@
                         <groupId>mysql</groupId>
                         <artifactId>mysql-connector-java</artifactId>
                         <version>5.1.34</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>com.cimen.dbtool</groupId>
-                        <artifactId>mbg-limit-plugin</artifactId>
-                        <version>1.0.0</version>
                     </dependency>
                 </dependencies>
                 <configuration>
