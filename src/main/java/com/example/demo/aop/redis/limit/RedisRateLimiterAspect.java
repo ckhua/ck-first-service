@@ -1,6 +1,7 @@
 package com.example.demo.aop.redis.limit;
 
 import cn.hutool.core.util.StrUtil;
+import com.example.demo.exception.SystemException;
 import com.example.demo.utils.IpUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -66,7 +67,7 @@ public class RedisRateLimiterAspect {
                     .orElse(StrUtil.join(SEPARATOR, getRequestURI(), method.getDeclaringClass().getName(), method.getName()));
             boolean limited = shouldLimited(key, redisRateLimiter.max(), redisRateLimiter.timeout(), redisRateLimiter.timeUnit());
             if (limited) {
-                throw new RuntimeException("手速太快了，慢点儿吧~");
+                throw SystemException.SERVER_BUSY.exception().get();
             }
         }
         log.info("限流 ------------------------------------------------------ end");

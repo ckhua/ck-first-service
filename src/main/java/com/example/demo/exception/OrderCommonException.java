@@ -10,6 +10,7 @@ public enum OrderCommonException implements ICkhEnumException {
 
     QUERY_ORDER_DATA_EXCEPTION("查询订单信息异常", 41000001),
 
+
     ;
 
     private String message;
