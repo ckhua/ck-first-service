@@ -11,6 +11,7 @@ import java.util.function.Function;
  **/
 public abstract class AbstractCommonService<Context, Param, Result> implements ICommonQueryService<Param, Result> {
 
+    @Override
     public Function<Param, Result> queryData() {
         return t -> {
             //构建上下文信息

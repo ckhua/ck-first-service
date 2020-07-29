@@ -1,8 +1,8 @@
 package com.example.demo.service.query.impl;
 
-import com.example.demo.vo.OrderCommonQueryParamVO;
-import com.example.demo.vo.OrderCommonQueryVO;
 import com.example.demo.service.query.context.OrderCommonQueryContext;
+import com.example.demo.vo.DataCommonQueryVO;
+import com.example.demo.vo.DataQueryParamVO;
 import org.springframework.stereotype.Service;
 
 import java.util.function.Function;
@@ -14,15 +14,15 @@ import java.util.function.Function;
  * @Version 1.0
  **/
 @Service(value = "ICommonQueryService_ORDER")
-public class OrderCommonQueryServiceImpl extends AbstractCommonService<OrderCommonQueryContext, OrderCommonQueryParamVO, OrderCommonQueryVO> {
+public class OrderCommonQueryServiceImpl extends AbstractCommonService<OrderCommonQueryContext, DataQueryParamVO, DataCommonQueryVO> {
 
     @Override
-    protected Function<OrderCommonQueryParamVO, OrderCommonQueryContext> buildContext() {
+    protected Function<DataQueryParamVO, OrderCommonQueryContext> buildContext() {
         return paramVO -> OrderCommonQueryContext.builder().build();
     }
 
     @Override
-    protected Function<OrderCommonQueryContext, OrderCommonQueryVO> buildResult() {
-        return context -> OrderCommonQueryVO.builder().orderNo("hello").build();
+    protected Function<OrderCommonQueryContext, DataCommonQueryVO> buildResult() {
+        return context -> DataCommonQueryVO.builder().orderNo("hello").build();
     }
 }

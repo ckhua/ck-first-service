@@ -17,7 +17,7 @@ import java.io.Serializable;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Data
 @Accessors(chain = true)
-public class OrderCommonQueryVO implements Serializable {
+public class DataCommonQueryVO implements Serializable {
 
     @ApiModelProperty("订单号")
     public String orderNo;

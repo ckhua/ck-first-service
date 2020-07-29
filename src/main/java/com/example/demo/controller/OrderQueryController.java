@@ -4,8 +4,8 @@ import com.example.demo.aop.redis.limit.RedisRateLimiter;
 import com.example.demo.enums.CommonQueryServiceType;
 import com.example.demo.exception.OrderCommonException;
 import com.example.demo.service.query.ICommonQueryService;
-import com.example.demo.vo.OrderCommonQueryParamVO;
-import com.example.demo.vo.OrderCommonQueryVO;
+import com.example.demo.vo.DataCommonQueryVO;
+import com.example.demo.vo.DataQueryParamVO;
 import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
 import io.swagger.annotations.Api;
@@ -38,8 +38,8 @@ public class OrderQueryController {
     @ApiOperation(value = "查询简单数据", notes = "查询简单数据")
     @PostMapping(value = "query/order/data", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @RedisRateLimiter(value = 2, key = "queryOrderData")
-    public List<OrderCommonQueryVO> queryOrder(@ApiParam(value = "编号", required = false) @RequestParam(value = "recordId", required = false) Integer recordId,
-                                               @ApiParam(value = "查询信息", required = false) @RequestBody OrderCommonQueryParamVO commonQueryParamVO) {
+    public List<DataCommonQueryVO> queryOrder(@ApiParam(value = "编号", required = false) @RequestParam(value = "recordId", required = false) Integer recordId,
+                                              @ApiParam(value = "查询信息", required = false) @RequestBody DataQueryParamVO commonQueryParamVO) {
 
 
         //根据业务信息 获取对应服务信息
@@ -50,14 +50,14 @@ public class OrderQueryController {
                 .orElseThrow(OrderCommonException.QUERY_ORDER_DATA_EXCEPTION.exception());
 
         //执行业务信息
-        List<OrderCommonQueryVO> orderCommonQueryVOList = Optional.ofNullable(commonQueryParamVO)
+        List<DataCommonQueryVO> dataCommonQueryVOList = Optional.ofNullable(commonQueryParamVO)
                 .map(vo -> queryService.queryData().apply(vo))
-                .map(vo -> (OrderCommonQueryVO) vo)
+                .map(vo -> (DataCommonQueryVO) vo)
                 .map(Lists::newArrayList)
                 .orElse(null);
 
         //真实业务需封装状态码
-        return orderCommonQueryVOList;
+        return dataCommonQueryVOList;
     }
 
     @ApiOperation(value = "查询简单数据(测试限流)", notes = "查询简单数据(测试限流)")
