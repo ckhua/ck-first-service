@@ -1,4 +1,4 @@
-package com.example.demo.service.filter;
+package com.example.demo.service.filter.impl;
 
 import com.example.demo.model.StudyCallRecord;
 import com.example.demo.utils.WordsFilterUtils;

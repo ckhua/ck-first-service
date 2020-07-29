@@ -47,6 +47,9 @@ public class RedisRateLimiterAspect {
     @Autowired
     private RedisScript<Long> limitRedisScript;
 
+
+    //拦截全部请求也可实现
+//    @Pointcut("execution(* com.example.demo.controller.*.*(..))")
     @Pointcut("@annotation(com.example.demo.aop.redis.limit.RedisRateLimiter)")
     public void rateLimit() {
     }

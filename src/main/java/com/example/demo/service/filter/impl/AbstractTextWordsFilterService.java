@@ -1,5 +1,6 @@
-package com.example.demo.service.filter;
+package com.example.demo.service.filter.impl;
 
+import com.example.demo.service.filter.ITextWordsFilterService;
 import com.example.demo.utils.WordsFilterUtils;
 import com.google.common.collect.Lists;
 
