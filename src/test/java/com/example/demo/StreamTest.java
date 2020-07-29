@@ -45,7 +45,7 @@ public class StreamTest {
      */
 
     @Test
-    void distintList() {
+    void distinctList() {
 
         List<StudyCallRecord> arrayList = Lists.newArrayList();
         StudyCallRecord studyCallRecord = new StudyCallRecord();
