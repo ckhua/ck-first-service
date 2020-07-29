@@ -9,7 +9,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * @Description 类注释
+ * @Description Stream 测试类
  * @Date 2020/7/29 10:19
  * @Author chen kang hua
  * @Version 1.0
@@ -69,7 +69,6 @@ public class StreamTest {
         System.out.println(records.size() + "----------------------------------------------");
 
     }
-
 
 
 }

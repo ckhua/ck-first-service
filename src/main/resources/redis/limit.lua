@@ -3,7 +3,7 @@ local key = KEYS[1]
 
 -- 获取参数
 local now = tonumber(ARGV[1])
-local ttl = tonumber(ARGV[2])
+local cacheTime = tonumber(ARGV[2])
 local expired = tonumber(ARGV[3])
 local max = tonumber(ARGV[4])
 
@@ -21,6 +21,6 @@ else
   -- 往 zset 中添加一个值、得分均为当前时间戳的元素，[value,score]
   redis.call("zadd", key, now, now)
   -- 每次访问均重新设置 zset 的过期时间，单位毫秒
-  redis.call("pexpire", key, ttl)
+  redis.call("pexpire", key, cacheTime)
   return next
 end

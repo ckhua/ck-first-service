@@ -1,11 +1,11 @@
 package com.example.demo.controller;
 
 import com.example.demo.aop.redis.limit.RedisRateLimiter;
-import com.example.demo.vo.OrderCommonQueryParamVO;
-import com.example.demo.vo.OrderCommonQueryVO;
 import com.example.demo.enums.CommonQueryServiceType;
 import com.example.demo.exception.OrderCommonException;
 import com.example.demo.service.query.ICommonQueryService;
+import com.example.demo.vo.OrderCommonQueryParamVO;
+import com.example.demo.vo.OrderCommonQueryVO;
 import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
 import io.swagger.annotations.Api;
@@ -13,10 +13,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -32,22 +29,18 @@ import java.util.Optional;
 @RestController
 public class OrderQueryController {
 
-//    @Autowired
-//    @Qualifier(value = "ICommonQueryService_ORDER")
-//    private ICommonQueryService commonQueryService;
-
     /**
      * 将 ICommonQueryService 装配进入map
      */
     @Autowired
     private Map<String, ICommonQueryService> commonQueryServiceMap;
 
-
     @ApiOperation(value = "查询简单数据", notes = "查询简单数据")
     @PostMapping(value = "query/order/data", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    @RedisRateLimiter(value = 1 ,key = "queryOrderData")
+    @RedisRateLimiter(value = 2, key = "queryOrderData")
     public List<OrderCommonQueryVO> queryOrder(@ApiParam(value = "编号", required = false) @RequestParam(value = "recordId", required = false) Integer recordId,
                                                @ApiParam(value = "查询信息", required = false) @RequestBody OrderCommonQueryParamVO commonQueryParamVO) {
+
 
         //根据业务信息 获取对应服务信息
         String serviceName = Joiner.on("").join(ICommonQueryService.class.getSimpleName(), "_", CommonQueryServiceType.ORDER.getCode());
@@ -66,5 +59,13 @@ public class OrderQueryController {
         //真实业务需封装状态码
         return orderCommonQueryVOList;
     }
+
+    @ApiOperation(value = "查询简单数据(测试限流)", notes = "查询简单数据(测试限流)")
+    @GetMapping(value = "query/order/data/test", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @RedisRateLimiter(value = 1, key = "queryOrderData")
+    public String queryOrderTest() {
+        return "ooo";
+    }
+
 
 }

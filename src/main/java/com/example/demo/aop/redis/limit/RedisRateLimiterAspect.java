@@ -78,17 +78,17 @@ public class RedisRateLimiterAspect {
         // 最终的 key 格式为：limit + key
         String finalKey = StrUtil.join(SEPARATOR, REDIS_LIMIT_KEY_PREFIX, key);
         // 统一使用单位毫秒
-        long ttl = timeUnit.toMillis(timeout);
+        long cacheTime = timeUnit.toMillis(timeout);
         // 当前时间毫秒数
         long now = Instant.now().toEpochMilli();
         // key的过期时间
-        long expired = now - ttl;
-        Long result = stringRedisTemplate.execute(limitRedisScript, Collections.singletonList(finalKey), now + "", ttl + "", expired + "", max + "");
+        long expired = now - cacheTime;
+        Long result = stringRedisTemplate.execute(limitRedisScript, Collections.singletonList(finalKey), now + "", cacheTime + "", expired + "", max + "");
         if (0 != result) {
-            log.info("【{}】在单位时间 {} 毫秒内访问 {} 次", finalKey, ttl, result);
+            log.info("【{}】在单位时间 {} 毫秒内访问 {} 次", finalKey, cacheTime, result);
             return Boolean.FALSE;
         } else {
-            log.error("【{}】在单位时间 {} 毫秒内已达到访问上限，当前接口上限 {}", finalKey, ttl, max);
+            log.error("【{}】在单位时间 {} 毫秒内已达到访问上限，当前接口上限 {}", finalKey, cacheTime, max);
             return Boolean.TRUE;
         }
     }
