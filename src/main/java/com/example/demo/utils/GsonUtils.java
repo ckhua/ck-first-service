@@ -95,20 +95,6 @@ public class GsonUtils {
         return gson.toJson(obj);
     }
 
-    public static void main(String[] args) {
-//        DataTaskRecord record = new DataTaskRecord();
-//        record.setRecordId(111);
-//        String toJson = toJson(record, Boolean.FALSE);
-//        DataTaskRecord fromJson = fromJson(toJson, DataTaskRecord.class);
-//        System.out.println(toJson);
-//        System.out.println(fromJson);
-//        List<DataTaskRecord> arrayList = Lists.newArrayList(record);
-//        String toaJson = toJson(arrayList, Boolean.FALSE);
-//        List<DataTaskRecord> taskRecords = fromJson(toaJson, new TypeToken<List<DataTaskRecord>>() {
-//        });
-//        System.out.println("list ： " + taskRecords);
-    }
-
     public static class MapTypeAdapter extends TypeAdapter<Object> {
 
         @Override
@@ -172,5 +158,20 @@ public class GsonUtils {
             // 序列化无需实现
         }
 
+    }
+
+
+    public static void main(String[] args) {
+//        DataTaskRecord record = new DataTaskRecord();
+//        record.setRecordId(111);
+//        String toJson = toJson(record, Boolean.FALSE);
+//        DataTaskRecord fromJson = fromJson(toJson, DataTaskRecord.class);
+//        System.out.println(toJson);
+//        System.out.println(fromJson);
+//        List<DataTaskRecord> arrayList = Lists.newArrayList(record);
+//        String toaJson = toJson(arrayList, Boolean.FALSE);
+//        List<DataTaskRecord> taskRecords = fromJson(toaJson, new TypeToken<List<DataTaskRecord>>() {
+//        });
+//        System.out.println("list ： " + taskRecords);
     }
 }
