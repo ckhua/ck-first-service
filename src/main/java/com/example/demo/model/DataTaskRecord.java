@@ -12,8 +12,8 @@ import java.io.Serializable;
  * @Version 1.0
  **/
 @Builder(builderClassName = "Builder", toBuilder = true)
-@NoArgsConstructor(access = AccessLevel.PACKAGE)
-@AllArgsConstructor(access = AccessLevel.PACKAGE)
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
+@AllArgsConstructor(access = AccessLevel.PUBLIC)
 @Data
 @Accessors(chain = true)
 public class DataTaskRecord implements Serializable {

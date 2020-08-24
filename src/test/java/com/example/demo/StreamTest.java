@@ -70,5 +70,9 @@ public class StreamTest {
 
     }
 
+    @Test
+    void testIn() {
+    }
+
 
 }

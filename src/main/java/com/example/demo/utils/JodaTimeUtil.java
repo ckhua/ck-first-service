@@ -6,7 +6,9 @@ import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
+import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.function.Supplier;
 
 @Slf4j
 public class JodaTimeUtil {
@@ -271,4 +273,32 @@ public class JodaTimeUtil {
         return dateTime.isAfter(startTime.getTime()) && dateTime.isBefore(endTime.getTime());
     }
 
+
+    public static void main(String[] args) {
+
+        toTime(() -> {
+            for (int i = 1; i < 1000000; i++) {
+                System.out.println(i);
+            }
+            return "";
+        });
+    }
+
+    private static void toTime(Supplier supplier) {
+
+        LocalDateTime now = LocalDateTime.now();
+        int second = now.getSecond();
+        String dateTime = TimeUtils.formatLocalDateTime(now, TimeUtils.DEFAULT_TIME_PATTERN);
+        System.out.println("开始时间 ：" + dateTime);
+
+        supplier.get();
+
+        LocalDateTime now1 = LocalDateTime.now();
+        int second1 = now1.getSecond();
+        String dateTime1 = TimeUtils.formatLocalDateTime(now1, TimeUtils.DEFAULT_TIME_PATTERN);
+        System.out.println("结束时间 ：" + dateTime1);
+        System.out.println("耗时 秒 ：" + (second1 - second));
+
+
+    }
 }
