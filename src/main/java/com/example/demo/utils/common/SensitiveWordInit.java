@@ -1,4 +1,4 @@
-package com.example.demo.utils;
+package com.example.demo.utils.common;
 
 import com.example.demo.model.StudyCallRecord;
 import com.example.demo.service.query.ICallRecordQueryService;

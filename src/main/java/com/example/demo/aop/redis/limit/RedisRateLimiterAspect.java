@@ -2,7 +2,7 @@ package com.example.demo.aop.redis.limit;
 
 import cn.hutool.core.util.StrUtil;
 import com.example.demo.exception.SystemException;
-import com.example.demo.utils.IpUtil;
+import com.example.demo.utils.common.IpUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;

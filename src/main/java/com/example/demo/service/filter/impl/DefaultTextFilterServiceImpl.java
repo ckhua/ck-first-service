@@ -1,7 +1,7 @@
 package com.example.demo.service.filter.impl;
 
 import com.example.demo.model.StudyCallRecord;
-import com.example.demo.utils.WordsFilterUtils;
+import com.example.demo.utils.common.WordsFilterUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,7 @@
 package com.example.demo.service.filter.impl;
 
 import com.example.demo.service.filter.ITextWordsFilterService;
-import com.example.demo.utils.WordsFilterUtils;
+import com.example.demo.utils.common.WordsFilterUtils;
 import com.google.common.collect.Lists;
 
 import java.util.List;

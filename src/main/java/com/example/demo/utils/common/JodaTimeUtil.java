@@ -1,4 +1,4 @@
-package com.example.demo.utils;
+package com.example.demo.utils.common;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;

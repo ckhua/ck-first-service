@@ -1,4 +1,4 @@
-package com.example.demo.utils;
+package com.example.demo.utils.common;
 
 import com.example.demo.model.DataTaskRecord;
 import com.google.common.collect.Lists;
@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
  * @Version 1.0
  **/
 @Slf4j
-public class ListSpitConsumerUtil {
+public class ListOperateUtil {
 
     private static final Integer COUNT = 3;
 
@@ -30,15 +30,21 @@ public class ListSpitConsumerUtil {
 
     public static void main(String[] args) {
         List<String> objects = Lists.newArrayList();
+        spitListAccept(objects, 4, System.out::println, (list) -> {
+            String collect = ((List<String>) list).stream().collect(Collectors.joining(","));
+            return collect;
+        });
+        List<DataTaskRecord> objects1 = Lists.newArrayList();
+        spitListAccept(objects1, 1, System.out::println, null);
+
         objects.add("1");
         objects.add("2");
         objects.add("3");
         objects.add("4");
         objects.add("5");
         objects.add("6");
-        spitListAccept(objects, 4, context -> System.out.println("s" + context), toJoin);
 
-        List<DataTaskRecord> objects1 = Lists.newArrayList();
+
         objects1.add(new DataTaskRecord(1));
         objects1.add(new DataTaskRecord(2));
         objects1.add(new DataTaskRecord(3));
@@ -48,7 +54,6 @@ public class ListSpitConsumerUtil {
         objects1.add(new DataTaskRecord(7));
         objects1.add(new DataTaskRecord(8));
 
-        spitListAccept(objects1, 3, spList(), null);
     }
 
 
@@ -60,7 +65,7 @@ public class ListSpitConsumerUtil {
      * @param function
      * @param <T>
      */
-    private static <T> void spitListAccept(List<T> sourceList, Integer spitCount, Consumer consumer, Function function) {
+    public static <T> void spitListAccept(List<T> sourceList, Integer spitCount, Consumer consumer, Function function) {
 
         if (CollectionUtils.isNotEmpty(sourceList)) {
             spitCount = Optional.ofNullable(spitCount)

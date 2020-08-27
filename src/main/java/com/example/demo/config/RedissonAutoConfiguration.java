@@ -1,6 +1,6 @@
 package com.example.demo.config;
 
-import com.example.demo.utils.IDGenerator;
+import com.example.demo.utils.common.IDGenerator;
 import org.redisson.Redisson;
 import org.redisson.api.RedissonClient;
 import org.redisson.codec.JsonJacksonCodec;
