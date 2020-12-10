@@ -10,9 +10,10 @@
 
         <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
         </plugin>
-        <!--数据库链接URL，用户名、密码 -->
+
+        <!--数据库链接URL，用户名、密码-->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://47.94.13.132:33306/study" userId="root" password="123456">
+          connectionURL="jdbc:mysql://rm-uf6eh20502p2772puym.mysql.rds.aliyuncs.com/zeus_goods_center" userId="root" password="BNVfwJ7QbZ0rUWtJs4WUg2JeJ8MIXIQv">
         </jdbcConnection>
         <!-- java类型处理器
             用于处理DB中的类型到Java中的类型，默认使用JavaTypeResolverDefaultImpl；
@@ -29,10 +30,9 @@
              -->
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
-
         <!-- 生成模型的包名和位置 -->
-        <javaModelGenerator targetPackage="com.example.demo.model"
-                            targetProject="../my-first-spring/src/main/java">
+        <javaModelGenerator targetPackage="com.example.demo"
+                            targetProject="../ck-first-service/src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
             <!-- 设置一个根对象，
@@ -40,35 +40,22 @@
                 注意：如果在key class或者record class中有root class相同的属性，MBG就不会重新生成这些属性了，包括：
                     1，属性名相同，类型相同，有相同的getter/setter方法；
              -->
+
         </javaModelGenerator>
-
-
-
         <!-- 生成映射文件的包名和位置 -->
-        <sqlMapGenerator targetPackage="mapper"
-                         targetProject="../my-first-spring/src/main/resources/mybatis">
-            <!--        <sqlMapGenerator targetPackage="com.cimen.ways.educe.dal"-->
-            <!--                         targetProject="../educe-service/src/main/resources/mybatis/polar">-->
+        <sqlMapGenerator targetPackage="com.example.demo.dal"
+                         targetProject="../ck-first-service/src/main/resources/mybatis/mapper">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
-
-
         <!-- 生成DAO的包名和位置 -->
         <javaClientGenerator type="XMLMAPPER"
                              targetPackage="com.example.demo.dal"
-                             targetProject="../my-first-spring/src/main/java">
-            <!--        <javaClientGenerator type="XMLMAPPER"-->
-            <!--                             targetPackage="com.cimen.ways.educe.dal.polar"-->
-            <!--                             targetProject="../educe-service/src/main/java">-->
+                             targetProject="../ck-first-service/src/main/java">
             <property name="enableSubPackages" value="true"/>
-
         </javaClientGenerator>
 
-        <!--不要改老表,注释即可,复制粘贴新的-->
-
-        <table tableName="study_call_record">
-            <generatedKey column="call_record_id" sqlStatement="JDBC"/>
+        <table tableName="zeus_three_type_bind_rel">
+            <generatedKey column="id" sqlStatement="JDBC"/>
         </table>
-
     </context>
 </generatorConfiguration>
