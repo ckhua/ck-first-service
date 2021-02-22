@@ -21,8 +21,9 @@ pagehelper:
 spring:
   redis:
     database: 0
-    host: 47.94.13.132
+    host: 139.196.167.143
     port: 6379
+    password: 40f429b722
 
 nacos:
   config:
