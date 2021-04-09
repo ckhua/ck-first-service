@@ -1,5 +1,6 @@
 package com.example.demo.service.test;
 
+import cn.hutool.core.util.StrUtil;
 import org.apache.commons.lang3.RandomUtils;
 
 /**
@@ -51,27 +52,14 @@ public class ThreadLocalTest {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        B b = new ThreadLocalTest().new B();
-        B b2 = new ThreadLocalTest().new B();
-        Thread t1 = new Thread() {
 
-            @Override
-            public void run() {
-                b.method1();
-            }
+        String s1 = "a,B,c";
 
-        };
-        Thread t2 = new Thread() {
+        String s2 = "a,b,c";
+        System.out.println(StrUtil.equalsIgnoreCase(s1, s2));
+        System.out.println(StrUtil.equals(s1, s2));
 
-            @Override
-            public void run() {
-                b2.method1();
-            }
-        };
-        t1.start();
-        t2.start();
-        t1.join();
-        t2.join();
-        System.out.println("finish");
+        ;
+
     }
 }

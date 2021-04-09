@@ -28,4 +28,14 @@ public class Times {
     private interface Task {
         void execute();
     }
+
+    public static void main(String[] args) {
+        int listSize = 36;
+        int spitCount = 200;
+        int skip = listSize % spitCount == 0 ? listSize / spitCount : listSize / spitCount + 1;
+        for (int i = 0; i < skip; i++) {
+
+            System.out.println(111);
+        }
+    }
 }

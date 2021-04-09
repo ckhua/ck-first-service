@@ -28,21 +28,24 @@ public class NacosController {
     @NacosValue(value = "${service.name:null}", autoRefreshed = true)
     private String myName;
 
-    @ApiOperation(value="查询配置信息")
+    @ApiOperation(value = "查询配置信息")
     @GetMapping(value = "/info")
-    public String info () {
+    public String info() {
         return myName;
     }
 
 
-    @ApiOperation(value="查询服务列表")
+    @ApiOperation(value = "查询服务列表")
     @GetMapping(value = "/getServerList")
-    public List<Instance> getServerList (@RequestParam String serviceName) {
+    public List<Instance> getServerList(@RequestParam String serviceName) {
         try {
-            return namingService.getAllInstances(serviceName) ;
-        } catch (Exception e){
+
+            return namingService.getAllInstances(serviceName);
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        return null ;
+        return null;
     }
+
+
 }

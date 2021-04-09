@@ -1,5 +1,5 @@
 server:
-  port: 8088
+  port: 8089
   name: ck-first-service
 
 endpoints:
@@ -23,6 +23,7 @@ spring:
     database: 0
     host: 47.94.13.132
     port: 6379
+    password: 123456
 
 nacos:
   config:

@@ -22,4 +22,6 @@ public class DataCommonQueryVO implements Serializable {
     @ApiModelProperty("订单号")
     public String orderNo;
 
+    public Integer ssss;
+
 }

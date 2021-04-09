@@ -6,7 +6,6 @@ import org.redisson.api.RedissonClient;
 import org.redisson.codec.JsonJacksonCodec;
 import org.redisson.config.Config;
 import org.redisson.spring.starter.RedissonProperties;
-import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
@@ -32,7 +31,6 @@ import java.util.List;
  */
 @Configuration
 @ConditionalOnClass({Redisson.class, RedisOperations.class})
-@AutoConfigureBefore(org.redisson.spring.starter.RedissonAutoConfiguration.class)
 @EnableConfigurationProperties({RedissonProperties.class, RedisProperties.class})
 public class RedissonAutoConfiguration {
     /**
