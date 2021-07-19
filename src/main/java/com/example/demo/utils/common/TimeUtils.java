@@ -17,7 +17,7 @@ public class TimeUtils {
 
     public static final String DEFAULT_TIME_PATTERN = "yyyy-MM-dd HH:mm:ss";
     public static final String DEFAULT_TIME_PATTERN_FD = "yyyyMMddHHmmss";
-    public static final String YMD_TIME_PATTERN = "yyyy-MM-dd";
+    public static final String YMD_TIME_PATTERN = "yyyy-MM-dd 00:00:00";
 
     public static void main(String[] args) {
         LocalDateTime now = LocalDateTime.now();

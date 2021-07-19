@@ -33,13 +33,13 @@ import static java.lang.Boolean.TRUE;
 public class DbConfig {
 
     //@Value("${ways.jdbc.url}")
-    private String url = "jdbc:mysql://47.94.13.132:33306/study?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true";
+    private String url = "jdbc:mysql://106.14.252.88:33306/study?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true";
 
     //@Value("${jdbc.username}")
     private String userName = "root";
 
     //@Value("${jdbc.password}")
-    private String password = "123456";
+    private String password = "ckh062488";
 
    // @Value("${druid.initialSize}")
     private int initialSize = 1;

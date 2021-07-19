@@ -1,5 +1,5 @@
 server:
-  port: 8089
+  port: 8079
   name: ck-first-service
 
 endpoints:
@@ -21,8 +21,8 @@ pagehelper:
 spring:
   redis:
     database: 0
-    host: 47.94.13.132
-    port: 6379
+    host: 106.14.252.88
+    port: 6380
     password: 123456
 
 nacos:
@@ -30,5 +30,17 @@ nacos:
     server-addr: 47.94.13.132:8848
   discovery:
     server-addr: 47.94.13.132:8848
+
+threadPool:
+  corePoolSize: 2
+  maxPoolSize: 4
+  queueCapacity: 50
+  keepAliveSeconds: 180
+  waitForTasksToCompleteOnShutdown: true
+  client:
+    config:
+      default:
+        connect-timeout: 100000
+        read-timeout: 200000
 
 

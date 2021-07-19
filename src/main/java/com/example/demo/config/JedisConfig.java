@@ -19,7 +19,7 @@ public class JedisConfig {
     @Value("${spring.redis.port}")
     private int port;
 
-    //@Value("${spring.redis.password}")
+    @Value("${spring.redis.password}")
     private String password = "";
 
     @Value("${spring.redis.jedis.pool.max-idle:8}")
@@ -47,7 +47,6 @@ public class JedisConfig {
     }
 
     @Bean
-    //@SuppressWarnings("unchecked")
     public RedisScript<Long> limitRedisScript() {
         DefaultRedisScript redisScript = new DefaultRedisScript<>();
         redisScript.setScriptSource(new ResourceScriptSource(new ClassPathResource("redis/limit.lua")));

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * @Description nacos 获取服务
@@ -47,5 +48,10 @@ public class NacosController {
         return null;
     }
 
+
+    public static void main(String[] args) {
+        UUID uuid = UUID.randomUUID();
+        System.out.println(uuid);
+    }
 
 }

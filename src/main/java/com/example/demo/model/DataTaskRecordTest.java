@@ -16,9 +16,9 @@ import java.io.Serializable;
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 @Data
 @Accessors(chain = true)
-public class DataTaskRecord implements Serializable {
+public class DataTaskRecordTest implements Serializable {
 
     private Integer recordId;
 
-
+    private Boolean isBo;
 }

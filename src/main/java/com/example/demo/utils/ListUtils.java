@@ -2,6 +2,7 @@ package com.example.demo.utils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Supplier;
 
 /**
  * @Description 类注释
@@ -10,6 +11,12 @@ import java.util.List;
  * @Version 1.0
  **/
 public class ListUtils {
+
+
+    public static <T> T tests(Supplier<T> s, Supplier<T> s1, Class<T> c) {
+        T t = s.get();
+        return t;
+    }
 
     public static <T> List<T> filter(List<T> list, ListUtilsHook<T> hook) {
         ArrayList<T> r = new ArrayList<T>();
@@ -39,16 +46,33 @@ public class ListUtils {
     public static void main(String[] args) {
 
 
-        String s = "";
-        Boolean s1 = Boolean.FALSE;
+        String s = "测试";
 
-        System.out.println(s + "   " + s1);
+        int length = s.length();
+        String two = s.substring(0, 1);
+        String first = s.substring(1, length);
+
+        System.out.println(two + "   " + first);
     }
 
-    public static String sss(String s, Boolean s1) {
+    public static String tst1() {
+        return "";
+    }
 
-        s1 = Boolean.TRUE;
-        return "2222";
+    ;
+
+    public static String tst2() {
+        return "";
+    }
+
+    ;
+
+    public static String sss() {
+
+        String s2 = tests(() -> tst2(), () -> tst2(), String.class);
+        System.out.println();
+
+        return s2;
     }
 
 

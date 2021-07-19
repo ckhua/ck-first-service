@@ -104,8 +104,9 @@ public class RedissonAutoConfiguration {
                     .setMasterName(redisProperties.getSentinel().getMaster())
                     .addSentinelAddress(nodes)
                     .setDatabase(redisProperties.getDatabase())
+//                    .setPassword(redisProperties.getPassword())
                     .setConnectTimeout(timeout)
-                    .setPassword(redisProperties.getPassword());
+            ;
         } else if (clusterMethod != null && ReflectionUtils.invokeMethod(clusterMethod, redisProperties) != null) {
             //集群
             Object clusterObject = ReflectionUtils.invokeMethod(clusterMethod, redisProperties);
@@ -116,7 +117,8 @@ public class RedissonAutoConfiguration {
             config.useClusterServers()
                     .addNodeAddress(nodes)
                     .setConnectTimeout(timeout)
-                    .setPassword(redisProperties.getPassword());
+//                    .setPassword(redisProperties.getPassword())
+            ;
         } else {
             //单机
             config = new Config();
@@ -133,8 +135,9 @@ public class RedissonAutoConfiguration {
             config.useSingleServer()
                     .setAddress(url)
                     .setConnectTimeout(timeout)
+//                    .setPassword(redisProperties.getPassword())
                     .setDatabase(redisProperties.getDatabase())
-                    .setPassword(redisProperties.getPassword());
+            ;
         }
         config.setCodec(JsonJacksonCodec.INSTANCE);
         return config;
